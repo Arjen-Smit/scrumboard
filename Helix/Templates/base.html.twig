@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/style/optimized/stylesheet.css" type="text/css" />
+        {% block head %}
+            <title>{% block title %}{% endblock title %} - MCT Recepten</title>
+        {% endblock head %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="topnavigation">
+                <ul>
+                    <li>
+                        <a href='/'>Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">{% block content %}{% endblock content %}</div>
+    </body>
+</html>

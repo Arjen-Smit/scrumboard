@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This new XML configuration format is the default format for properties
+	files.  You can also used the old INI-based .properties format, but
+	support for this will be removed in next major Propel version. -->
+
+<config>
+	<propel>
+		<datasources default="scrumboard">
+			<datasource id="scrumboard">
+				<!-- the Propel adapter (usually same as phptype of connection DSN) -->
+				<adapter>mysql</adapter>
+				<!-- Connection DSN.  See PEAR DSN format for other supported parameters. -->
+				<connection>
+					<dsn>mysql:dbname=scrumboard;host=localhost</dsn>
+					<user>scrumboard</user>
+					<password>scrumboard</password>
+					<options>
+						<option id="ATTR_PERSISTENT">false</option>
+						<option id="ATTR_EMULATE_PREPARES">true</option>
+					</options>
+                                        <settings>
+                                            <setting id="charset">utf8</setting>
+                                        </settings>
+				</connection>
+			</datasource>
+		</datasources>
+	</propel>
+</config>

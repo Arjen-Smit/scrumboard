@@ -1,0 +1,23 @@
+{
+    "name": "Scrumboard",
+        "description": "Scrumboard",
+        "authors": [{
+            "name": "Arjen Smit",
+            "email": "arjen@alnitak.nl",
+            "homepage": "http://www.alnitak.nl"
+    }],
+    "config": {
+        "vendor-dir": "Helix/Externals"
+    },
+    "require": {
+        "propel/propel1": "~1.6",
+        "twig/twig": "1.*",
+	"silex/silex": "1.0.*@dev",
+        "imagine/Imagine": "0.4.*",
+        "knplabs/knp-snappy": "dev-master",
+        "grom/silex-service-provider": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"Helix\\Modules": "."}
+    }
+}
