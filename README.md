@@ -1,4 +1,4 @@
 scrumboard
 ==========
 
-Scrumboard
+Webversion of our scrumboard
