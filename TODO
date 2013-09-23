@@ -1,3 +1,5 @@
 TODO:
 
-Move the router out of the database to a class to use it more flexable and faster.
+- Move the router out of the database to a class to use it more flexable and faster.
+- Implement Guard, with composer
+- Search for a javascript optimizer for guard, that can handle jQuery
