@@ -3,7 +3,7 @@
 
 
 /**
- * Skeleton subclass for performing query and update operations on the 'Helix_router' table.
+ * Skeleton subclass for performing query and update operations on the 'Router' table.
  *
  *
  *
@@ -13,6 +13,6 @@
  *
  * @package    propel.generator.Scrumboard
  */
-class HelixRouterQuery extends BaseHelixRouterQuery
+class RouterQuery extends BaseRouterQuery
 {
 }

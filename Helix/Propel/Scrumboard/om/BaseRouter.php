@@ -2,24 +2,24 @@
 
 
 /**
- * Base class that represents a row from the 'Helix_router' table.
+ * Base class that represents a row from the 'Router' table.
  *
  *
  *
  * @package    propel.generator.Scrumboard.om
  */
-abstract class BaseHelixRouter extends BaseObject implements Persistent
+abstract class BaseRouter extends BaseObject implements Persistent
 {
     /**
      * Peer class name
      */
-    const PEER = 'HelixRouterPeer';
+    const PEER = 'RouterPeer';
 
     /**
      * The Peer class.
      * Instance provides a convenient way of calling static methods on a class
      * that calling code may not be able to identify.
-     * @var        HelixRouterPeer
+     * @var        RouterPeer
      */
     protected static $peer;
 
@@ -43,22 +43,16 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     protected $active;
 
     /**
-     * The value for the seolink field.
+     * The value for the link field.
      * @var        string
      */
-    protected $seolink;
+    protected $link;
 
     /**
-     * The value for the module field.
+     * The value for the action field.
      * @var        string
      */
-    protected $module;
-
-    /**
-     * @var        PropelObjectCollection|HelixRouterArgument[] Collection to store aggregation of HelixRouterArgument objects.
-     */
-    protected $collHelixRouterArguments;
-    protected $collHelixRouterArgumentsPartial;
+    protected $action;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -81,12 +75,6 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     protected $alreadyInClearAllReferencesDeep = false;
 
     /**
-     * An array of objects scheduled for deletion.
-     * @var		PropelObjectCollection
-     */
-    protected $helixRouterArgumentsScheduledForDeletion = null;
-
-    /**
      * Applies default values to this object.
      * This method should be called from the object's constructor (or
      * equivalent initialization method).
@@ -98,7 +86,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     }
 
     /**
-     * Initializes internal state of BaseHelixRouter object.
+     * Initializes internal state of BaseRouter object.
      * @see        applyDefaults()
      */
     public function __construct()
@@ -128,30 +116,30 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     }
 
     /**
-     * Get the [seolink] column value.
+     * Get the [link] column value.
      *
      * @return string
      */
-    public function getSeolink()
+    public function getLink()
     {
-        return $this->seolink;
+        return $this->link;
     }
 
     /**
-     * Get the [module] column value.
+     * Get the [action] column value.
      *
      * @return string
      */
-    public function getModule()
+    public function getAction()
     {
-        return $this->module;
+        return $this->action;
     }
 
     /**
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return HelixRouter The current object (for fluent API support)
+     * @return Router The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -161,7 +149,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
 
         if ($this->id !== $v) {
             $this->id = $v;
-            $this->modifiedColumns[] = HelixRouterPeer::ID;
+            $this->modifiedColumns[] = RouterPeer::ID;
         }
 
 
@@ -176,7 +164,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      * Check on string values is case insensitive (so 'FaLsE' is seen as 'false').
      *
      * @param boolean|integer|string $v The new value
-     * @return HelixRouter The current object (for fluent API support)
+     * @return Router The current object (for fluent API support)
      */
     public function setActive($v)
     {
@@ -190,7 +178,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
 
         if ($this->active !== $v) {
             $this->active = $v;
-            $this->modifiedColumns[] = HelixRouterPeer::ACTIVE;
+            $this->modifiedColumns[] = RouterPeer::ACTIVE;
         }
 
 
@@ -198,46 +186,46 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     } // setActive()
 
     /**
-     * Set the value of [seolink] column.
+     * Set the value of [link] column.
      *
      * @param string $v new value
-     * @return HelixRouter The current object (for fluent API support)
+     * @return Router The current object (for fluent API support)
      */
-    public function setSeolink($v)
+    public function setLink($v)
     {
         if ($v !== null && is_numeric($v)) {
             $v = (string) $v;
         }
 
-        if ($this->seolink !== $v) {
-            $this->seolink = $v;
-            $this->modifiedColumns[] = HelixRouterPeer::SEOLINK;
+        if ($this->link !== $v) {
+            $this->link = $v;
+            $this->modifiedColumns[] = RouterPeer::LINK;
         }
 
 
         return $this;
-    } // setSeolink()
+    } // setLink()
 
     /**
-     * Set the value of [module] column.
+     * Set the value of [action] column.
      *
      * @param string $v new value
-     * @return HelixRouter The current object (for fluent API support)
+     * @return Router The current object (for fluent API support)
      */
-    public function setModule($v)
+    public function setAction($v)
     {
         if ($v !== null && is_numeric($v)) {
             $v = (string) $v;
         }
 
-        if ($this->module !== $v) {
-            $this->module = $v;
-            $this->modifiedColumns[] = HelixRouterPeer::MODULE;
+        if ($this->action !== $v) {
+            $this->action = $v;
+            $this->modifiedColumns[] = RouterPeer::ACTION;
         }
 
 
         return $this;
-    } // setModule()
+    } // setAction()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -277,8 +265,8 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
 
             $this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
             $this->active = ($row[$startcol + 1] !== null) ? (boolean) $row[$startcol + 1] : null;
-            $this->seolink = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-            $this->module = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
+            $this->link = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
+            $this->action = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -287,10 +275,10 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                 $this->ensureConsistency();
             }
             $this->postHydrate($row, $startcol, $rehydrate);
-            return $startcol + 4; // 4 = HelixRouterPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 4; // 4 = RouterPeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException("Error populating HelixRouter object", $e);
+            throw new PropelException("Error populating Router object", $e);
         }
     }
 
@@ -333,13 +321,13 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         // We don't need to alter the object instance pool; we're just modifying this instance
         // already in the pool.
 
-        $stmt = HelixRouterPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+        $stmt = RouterPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         $stmt->closeCursor();
         if (!$row) {
@@ -348,8 +336,6 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
         $this->hydrate($row, 0, true); // rehydrate
 
         if ($deep) {  // also de-associate any related objects?
-
-            $this->collHelixRouterArguments = null;
 
         } // if (deep)
     }
@@ -371,12 +357,12 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
         try {
-            $deleteQuery = HelixRouterQuery::create()
+            $deleteQuery = RouterQuery::create()
                 ->filterByPrimaryKey($this->getPrimaryKey());
             $ret = $this->preDelete($con);
             if ($ret) {
@@ -414,7 +400,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         $con->beginTransaction();
@@ -434,7 +420,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                     $this->postUpdate($con);
                 }
                 $this->postSave($con);
-                HelixRouterPeer::addInstanceToPool($this);
+                RouterPeer::addInstanceToPool($this);
             } else {
                 $affectedRows = 0;
             }
@@ -475,23 +461,6 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                 $this->resetModified();
             }
 
-            if ($this->helixRouterArgumentsScheduledForDeletion !== null) {
-                if (!$this->helixRouterArgumentsScheduledForDeletion->isEmpty()) {
-                    HelixRouterArgumentQuery::create()
-                        ->filterByPrimaryKeys($this->helixRouterArgumentsScheduledForDeletion->getPrimaryKeys(false))
-                        ->delete($con);
-                    $this->helixRouterArgumentsScheduledForDeletion = null;
-                }
-            }
-
-            if ($this->collHelixRouterArguments !== null) {
-                foreach ($this->collHelixRouterArguments as $referrerFK) {
-                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
-                        $affectedRows += $referrerFK->save($con);
-                    }
-                }
-            }
-
             $this->alreadyInSave = false;
 
         }
@@ -512,27 +481,27 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
         $modifiedColumns = array();
         $index = 0;
 
-        $this->modifiedColumns[] = HelixRouterPeer::ID;
+        $this->modifiedColumns[] = RouterPeer::ID;
         if (null !== $this->id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . HelixRouterPeer::ID . ')');
+            throw new PropelException('Cannot insert a value for auto-increment primary key (' . RouterPeer::ID . ')');
         }
 
          // check the columns in natural order for more readable SQL queries
-        if ($this->isColumnModified(HelixRouterPeer::ID)) {
+        if ($this->isColumnModified(RouterPeer::ID)) {
             $modifiedColumns[':p' . $index++]  = '`id`';
         }
-        if ($this->isColumnModified(HelixRouterPeer::ACTIVE)) {
+        if ($this->isColumnModified(RouterPeer::ACTIVE)) {
             $modifiedColumns[':p' . $index++]  = '`active`';
         }
-        if ($this->isColumnModified(HelixRouterPeer::SEOLINK)) {
-            $modifiedColumns[':p' . $index++]  = '`seolink`';
+        if ($this->isColumnModified(RouterPeer::LINK)) {
+            $modifiedColumns[':p' . $index++]  = '`link`';
         }
-        if ($this->isColumnModified(HelixRouterPeer::MODULE)) {
-            $modifiedColumns[':p' . $index++]  = '`module`';
+        if ($this->isColumnModified(RouterPeer::ACTION)) {
+            $modifiedColumns[':p' . $index++]  = '`action`';
         }
 
         $sql = sprintf(
-            'INSERT INTO `Helix_router` (%s) VALUES (%s)',
+            'INSERT INTO `Router` (%s) VALUES (%s)',
             implode(', ', $modifiedColumns),
             implode(', ', array_keys($modifiedColumns))
         );
@@ -547,11 +516,11 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                     case '`active`':
                         $stmt->bindValue($identifier, (int) $this->active, PDO::PARAM_INT);
                         break;
-                    case '`seolink`':
-                        $stmt->bindValue($identifier, $this->seolink, PDO::PARAM_STR);
+                    case '`link`':
+                        $stmt->bindValue($identifier, $this->link, PDO::PARAM_STR);
                         break;
-                    case '`module`':
-                        $stmt->bindValue($identifier, $this->module, PDO::PARAM_STR);
+                    case '`action`':
+                        $stmt->bindValue($identifier, $this->action, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -647,18 +616,10 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
             $failureMap = array();
 
 
-            if (($retval = HelixRouterPeer::doValidate($this, $columns)) !== true) {
+            if (($retval = RouterPeer::doValidate($this, $columns)) !== true) {
                 $failureMap = array_merge($failureMap, $retval);
             }
 
-
-                if ($this->collHelixRouterArguments !== null) {
-                    foreach ($this->collHelixRouterArguments as $referrerFK) {
-                        if (!$referrerFK->validate($columns)) {
-                            $failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
-                        }
-                    }
-                }
 
 
             $this->alreadyInValidation = false;
@@ -679,7 +640,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = HelixRouterPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = RouterPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
         $field = $this->getByPosition($pos);
 
         return $field;
@@ -702,10 +663,10 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                 return $this->getActive();
                 break;
             case 2:
-                return $this->getSeolink();
+                return $this->getLink();
                 break;
             case 3:
-                return $this->getModule();
+                return $this->getAction();
                 break;
             default:
                 return null;
@@ -724,28 +685,22 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      *                    Defaults to BasePeer::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to true.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
-     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
     {
-        if (isset($alreadyDumpedObjects['HelixRouter'][$this->getPrimaryKey()])) {
+        if (isset($alreadyDumpedObjects['Router'][$this->getPrimaryKey()])) {
             return '*RECURSION*';
         }
-        $alreadyDumpedObjects['HelixRouter'][$this->getPrimaryKey()] = true;
-        $keys = HelixRouterPeer::getFieldNames($keyType);
+        $alreadyDumpedObjects['Router'][$this->getPrimaryKey()] = true;
+        $keys = RouterPeer::getFieldNames($keyType);
         $result = array(
             $keys[0] => $this->getId(),
             $keys[1] => $this->getActive(),
-            $keys[2] => $this->getSeolink(),
-            $keys[3] => $this->getModule(),
+            $keys[2] => $this->getLink(),
+            $keys[3] => $this->getAction(),
         );
-        if ($includeForeignObjects) {
-            if (null !== $this->collHelixRouterArguments) {
-                $result['HelixRouterArguments'] = $this->collHelixRouterArguments->toArray(null, true, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
-            }
-        }
 
         return $result;
     }
@@ -763,7 +718,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
     {
-        $pos = HelixRouterPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+        $pos = RouterPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 
         $this->setByPosition($pos, $value);
     }
@@ -786,10 +741,10 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
                 $this->setActive($value);
                 break;
             case 2:
-                $this->setSeolink($value);
+                $this->setLink($value);
                 break;
             case 3:
-                $this->setModule($value);
+                $this->setAction($value);
                 break;
         } // switch()
     }
@@ -813,12 +768,12 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
     {
-        $keys = HelixRouterPeer::getFieldNames($keyType);
+        $keys = RouterPeer::getFieldNames($keyType);
 
         if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
         if (array_key_exists($keys[1], $arr)) $this->setActive($arr[$keys[1]]);
-        if (array_key_exists($keys[2], $arr)) $this->setSeolink($arr[$keys[2]]);
-        if (array_key_exists($keys[3], $arr)) $this->setModule($arr[$keys[3]]);
+        if (array_key_exists($keys[2], $arr)) $this->setLink($arr[$keys[2]]);
+        if (array_key_exists($keys[3], $arr)) $this->setAction($arr[$keys[3]]);
     }
 
     /**
@@ -828,12 +783,12 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function buildCriteria()
     {
-        $criteria = new Criteria(HelixRouterPeer::DATABASE_NAME);
+        $criteria = new Criteria(RouterPeer::DATABASE_NAME);
 
-        if ($this->isColumnModified(HelixRouterPeer::ID)) $criteria->add(HelixRouterPeer::ID, $this->id);
-        if ($this->isColumnModified(HelixRouterPeer::ACTIVE)) $criteria->add(HelixRouterPeer::ACTIVE, $this->active);
-        if ($this->isColumnModified(HelixRouterPeer::SEOLINK)) $criteria->add(HelixRouterPeer::SEOLINK, $this->seolink);
-        if ($this->isColumnModified(HelixRouterPeer::MODULE)) $criteria->add(HelixRouterPeer::MODULE, $this->module);
+        if ($this->isColumnModified(RouterPeer::ID)) $criteria->add(RouterPeer::ID, $this->id);
+        if ($this->isColumnModified(RouterPeer::ACTIVE)) $criteria->add(RouterPeer::ACTIVE, $this->active);
+        if ($this->isColumnModified(RouterPeer::LINK)) $criteria->add(RouterPeer::LINK, $this->link);
+        if ($this->isColumnModified(RouterPeer::ACTION)) $criteria->add(RouterPeer::ACTION, $this->action);
 
         return $criteria;
     }
@@ -848,8 +803,8 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function buildPkeyCriteria()
     {
-        $criteria = new Criteria(HelixRouterPeer::DATABASE_NAME);
-        $criteria->add(HelixRouterPeer::ID, $this->id);
+        $criteria = new Criteria(RouterPeer::DATABASE_NAME);
+        $criteria->add(RouterPeer::ID, $this->id);
 
         return $criteria;
     }
@@ -890,7 +845,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param object $copyObj An object of HelixRouter (or compatible) type.
+     * @param object $copyObj An object of Router (or compatible) type.
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -898,26 +853,8 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     public function copyInto($copyObj, $deepCopy = false, $makeNew = true)
     {
         $copyObj->setActive($this->getActive());
-        $copyObj->setSeolink($this->getSeolink());
-        $copyObj->setModule($this->getModule());
-
-        if ($deepCopy && !$this->startCopy) {
-            // important: temporarily setNew(false) because this affects the behavior of
-            // the getter/setter methods for fkey referrer objects.
-            $copyObj->setNew(false);
-            // store object hash to prevent cycle
-            $this->startCopy = true;
-
-            foreach ($this->getHelixRouterArguments() as $relObj) {
-                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-                    $copyObj->addHelixRouterArgument($relObj->copy($deepCopy));
-                }
-            }
-
-            //unflag object copy
-            $this->startCopy = false;
-        } // if ($deepCopy)
-
+        $copyObj->setLink($this->getLink());
+        $copyObj->setAction($this->getAction());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setId(NULL); // this is a auto-increment column, so set to default value
@@ -933,7 +870,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      * objects.
      *
      * @param boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return HelixRouter Clone of current object.
+     * @return Router Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -953,249 +890,15 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      * same instance for all member of this class. The method could therefore
      * be static, but this would prevent one from overriding the behavior.
      *
-     * @return HelixRouterPeer
+     * @return RouterPeer
      */
     public function getPeer()
     {
         if (self::$peer === null) {
-            self::$peer = new HelixRouterPeer();
+            self::$peer = new RouterPeer();
         }
 
         return self::$peer;
-    }
-
-
-    /**
-     * Initializes a collection based on the name of a relation.
-     * Avoids crafting an 'init[$relationName]s' method name
-     * that wouldn't work when StandardEnglishPluralizer is used.
-     *
-     * @param string $relationName The name of the relation to initialize
-     * @return void
-     */
-    public function initRelation($relationName)
-    {
-        if ('HelixRouterArgument' == $relationName) {
-            $this->initHelixRouterArguments();
-        }
-    }
-
-    /**
-     * Clears out the collHelixRouterArguments collection
-     *
-     * This does not modify the database; however, it will remove any associated objects, causing
-     * them to be refetched by subsequent calls to accessor method.
-     *
-     * @return HelixRouter The current object (for fluent API support)
-     * @see        addHelixRouterArguments()
-     */
-    public function clearHelixRouterArguments()
-    {
-        $this->collHelixRouterArguments = null; // important to set this to null since that means it is uninitialized
-        $this->collHelixRouterArgumentsPartial = null;
-
-        return $this;
-    }
-
-    /**
-     * reset is the collHelixRouterArguments collection loaded partially
-     *
-     * @return void
-     */
-    public function resetPartialHelixRouterArguments($v = true)
-    {
-        $this->collHelixRouterArgumentsPartial = $v;
-    }
-
-    /**
-     * Initializes the collHelixRouterArguments collection.
-     *
-     * By default this just sets the collHelixRouterArguments collection to an empty array (like clearcollHelixRouterArguments());
-     * however, you may wish to override this method in your stub class to provide setting appropriate
-     * to your application -- for example, setting the initial array to the values stored in database.
-     *
-     * @param boolean $overrideExisting If set to true, the method call initializes
-     *                                        the collection even if it is not empty
-     *
-     * @return void
-     */
-    public function initHelixRouterArguments($overrideExisting = true)
-    {
-        if (null !== $this->collHelixRouterArguments && !$overrideExisting) {
-            return;
-        }
-        $this->collHelixRouterArguments = new PropelObjectCollection();
-        $this->collHelixRouterArguments->setModel('HelixRouterArgument');
-    }
-
-    /**
-     * Gets an array of HelixRouterArgument objects which contain a foreign key that references this object.
-     *
-     * If the $criteria is not null, it is used to always fetch the results from the database.
-     * Otherwise the results are fetched from the database the first time, then cached.
-     * Next time the same method is called without $criteria, the cached collection is returned.
-     * If this HelixRouter is new, it will return
-     * an empty collection or the current collection; the criteria is ignored on a new object.
-     *
-     * @param Criteria $criteria optional Criteria object to narrow the query
-     * @param PropelPDO $con optional connection object
-     * @return PropelObjectCollection|HelixRouterArgument[] List of HelixRouterArgument objects
-     * @throws PropelException
-     */
-    public function getHelixRouterArguments($criteria = null, PropelPDO $con = null)
-    {
-        $partial = $this->collHelixRouterArgumentsPartial && !$this->isNew();
-        if (null === $this->collHelixRouterArguments || null !== $criteria  || $partial) {
-            if ($this->isNew() && null === $this->collHelixRouterArguments) {
-                // return empty collection
-                $this->initHelixRouterArguments();
-            } else {
-                $collHelixRouterArguments = HelixRouterArgumentQuery::create(null, $criteria)
-                    ->filterByHelixRouter($this)
-                    ->find($con);
-                if (null !== $criteria) {
-                    if (false !== $this->collHelixRouterArgumentsPartial && count($collHelixRouterArguments)) {
-                      $this->initHelixRouterArguments(false);
-
-                      foreach($collHelixRouterArguments as $obj) {
-                        if (false == $this->collHelixRouterArguments->contains($obj)) {
-                          $this->collHelixRouterArguments->append($obj);
-                        }
-                      }
-
-                      $this->collHelixRouterArgumentsPartial = true;
-                    }
-
-                    $collHelixRouterArguments->getInternalIterator()->rewind();
-                    return $collHelixRouterArguments;
-                }
-
-                if($partial && $this->collHelixRouterArguments) {
-                    foreach($this->collHelixRouterArguments as $obj) {
-                        if($obj->isNew()) {
-                            $collHelixRouterArguments[] = $obj;
-                        }
-                    }
-                }
-
-                $this->collHelixRouterArguments = $collHelixRouterArguments;
-                $this->collHelixRouterArgumentsPartial = false;
-            }
-        }
-
-        return $this->collHelixRouterArguments;
-    }
-
-    /**
-     * Sets a collection of HelixRouterArgument objects related by a one-to-many relationship
-     * to the current object.
-     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
-     * and new objects from the given Propel collection.
-     *
-     * @param PropelCollection $helixRouterArguments A Propel collection.
-     * @param PropelPDO $con Optional connection object
-     * @return HelixRouter The current object (for fluent API support)
-     */
-    public function setHelixRouterArguments(PropelCollection $helixRouterArguments, PropelPDO $con = null)
-    {
-        $helixRouterArgumentsToDelete = $this->getHelixRouterArguments(new Criteria(), $con)->diff($helixRouterArguments);
-
-        $this->helixRouterArgumentsScheduledForDeletion = unserialize(serialize($helixRouterArgumentsToDelete));
-
-        foreach ($helixRouterArgumentsToDelete as $helixRouterArgumentRemoved) {
-            $helixRouterArgumentRemoved->setHelixRouter(null);
-        }
-
-        $this->collHelixRouterArguments = null;
-        foreach ($helixRouterArguments as $helixRouterArgument) {
-            $this->addHelixRouterArgument($helixRouterArgument);
-        }
-
-        $this->collHelixRouterArguments = $helixRouterArguments;
-        $this->collHelixRouterArgumentsPartial = false;
-
-        return $this;
-    }
-
-    /**
-     * Returns the number of related HelixRouterArgument objects.
-     *
-     * @param Criteria $criteria
-     * @param boolean $distinct
-     * @param PropelPDO $con
-     * @return int             Count of related HelixRouterArgument objects.
-     * @throws PropelException
-     */
-    public function countHelixRouterArguments(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
-    {
-        $partial = $this->collHelixRouterArgumentsPartial && !$this->isNew();
-        if (null === $this->collHelixRouterArguments || null !== $criteria || $partial) {
-            if ($this->isNew() && null === $this->collHelixRouterArguments) {
-                return 0;
-            }
-
-            if($partial && !$criteria) {
-                return count($this->getHelixRouterArguments());
-            }
-            $query = HelixRouterArgumentQuery::create(null, $criteria);
-            if ($distinct) {
-                $query->distinct();
-            }
-
-            return $query
-                ->filterByHelixRouter($this)
-                ->count($con);
-        }
-
-        return count($this->collHelixRouterArguments);
-    }
-
-    /**
-     * Method called to associate a HelixRouterArgument object to this object
-     * through the HelixRouterArgument foreign key attribute.
-     *
-     * @param    HelixRouterArgument $l HelixRouterArgument
-     * @return HelixRouter The current object (for fluent API support)
-     */
-    public function addHelixRouterArgument(HelixRouterArgument $l)
-    {
-        if ($this->collHelixRouterArguments === null) {
-            $this->initHelixRouterArguments();
-            $this->collHelixRouterArgumentsPartial = true;
-        }
-        if (!in_array($l, $this->collHelixRouterArguments->getArrayCopy(), true)) { // only add it if the **same** object is not already associated
-            $this->doAddHelixRouterArgument($l);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param	HelixRouterArgument $helixRouterArgument The helixRouterArgument object to add.
-     */
-    protected function doAddHelixRouterArgument($helixRouterArgument)
-    {
-        $this->collHelixRouterArguments[]= $helixRouterArgument;
-        $helixRouterArgument->setHelixRouter($this);
-    }
-
-    /**
-     * @param	HelixRouterArgument $helixRouterArgument The helixRouterArgument object to remove.
-     * @return HelixRouter The current object (for fluent API support)
-     */
-    public function removeHelixRouterArgument($helixRouterArgument)
-    {
-        if ($this->getHelixRouterArguments()->contains($helixRouterArgument)) {
-            $this->collHelixRouterArguments->remove($this->collHelixRouterArguments->search($helixRouterArgument));
-            if (null === $this->helixRouterArgumentsScheduledForDeletion) {
-                $this->helixRouterArgumentsScheduledForDeletion = clone $this->collHelixRouterArguments;
-                $this->helixRouterArgumentsScheduledForDeletion->clear();
-            }
-            $this->helixRouterArgumentsScheduledForDeletion[]= clone $helixRouterArgument;
-            $helixRouterArgument->setHelixRouter(null);
-        }
-
-        return $this;
     }
 
     /**
@@ -1205,8 +908,8 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     {
         $this->id = null;
         $this->active = null;
-        $this->seolink = null;
-        $this->module = null;
+        $this->link = null;
+        $this->action = null;
         $this->alreadyInSave = false;
         $this->alreadyInValidation = false;
         $this->alreadyInClearAllReferencesDeep = false;
@@ -1230,19 +933,10 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
     {
         if ($deep && !$this->alreadyInClearAllReferencesDeep) {
             $this->alreadyInClearAllReferencesDeep = true;
-            if ($this->collHelixRouterArguments) {
-                foreach ($this->collHelixRouterArguments as $o) {
-                    $o->clearAllReferences($deep);
-                }
-            }
 
             $this->alreadyInClearAllReferencesDeep = false;
         } // if ($deep)
 
-        if ($this->collHelixRouterArguments instanceof PropelCollection) {
-            $this->collHelixRouterArguments->clearIterator();
-        }
-        $this->collHelixRouterArguments = null;
     }
 
     /**
@@ -1252,7 +946,7 @@ abstract class BaseHelixRouter extends BaseObject implements Persistent
      */
     public function __toString()
     {
-        return (string) $this->exportTo(HelixRouterPeer::DEFAULT_STRING_FORMAT);
+        return (string) $this->exportTo(RouterPeer::DEFAULT_STRING_FORMAT);
     }
 
     /**

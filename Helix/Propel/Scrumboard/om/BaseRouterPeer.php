@@ -2,26 +2,26 @@
 
 
 /**
- * Base static class for performing query and update operations on the 'Helix_router_argument' table.
+ * Base static class for performing query and update operations on the 'Router' table.
  *
  *
  *
  * @package propel.generator.Scrumboard.om
  */
-abstract class BaseHelixRouterArgumentPeer
+abstract class BaseRouterPeer
 {
 
     /** the default database name for this class */
     const DATABASE_NAME = 'scrumboard';
 
     /** the table name for this class */
-    const TABLE_NAME = 'Helix_router_argument';
+    const TABLE_NAME = 'Router';
 
     /** the related Propel class for this table */
-    const OM_CLASS = 'HelixRouterArgument';
+    const OM_CLASS = 'Router';
 
     /** the related TableMap class for this table */
-    const TM_CLASS = 'HelixRouterArgumentTableMap';
+    const TM_CLASS = 'RouterTableMap';
 
     /** The total number of columns. */
     const NUM_COLUMNS = 4;
@@ -33,25 +33,25 @@ abstract class BaseHelixRouterArgumentPeer
     const NUM_HYDRATE_COLUMNS = 4;
 
     /** the column name for the id field */
-    const ID = 'Helix_router_argument.id';
+    const ID = 'Router.id';
 
-    /** the column name for the router_id field */
-    const ROUTER_ID = 'Helix_router_argument.router_id';
+    /** the column name for the active field */
+    const ACTIVE = 'Router.active';
 
-    /** the column name for the key field */
-    const KEY = 'Helix_router_argument.key';
+    /** the column name for the link field */
+    const LINK = 'Router.link';
 
-    /** the column name for the value field */
-    const VALUE = 'Helix_router_argument.value';
+    /** the column name for the action field */
+    const ACTION = 'Router.action';
 
     /** The default string format for model objects of the related table **/
     const DEFAULT_STRING_FORMAT = 'YAML';
 
     /**
-     * An identiy map to hold any loaded instances of HelixRouterArgument objects.
+     * An identiy map to hold any loaded instances of Router objects.
      * This must be public so that other peer classes can access this when hydrating from JOIN
      * queries.
-     * @var        array HelixRouterArgument[]
+     * @var        array Router[]
      */
     public static $instances = array();
 
@@ -60,14 +60,14 @@ abstract class BaseHelixRouterArgumentPeer
      * holds an array of fieldnames
      *
      * first dimension keys are the type constants
-     * e.g. HelixRouterArgumentPeer::$fieldNames[HelixRouterArgumentPeer::TYPE_PHPNAME][0] = 'Id'
+     * e.g. RouterPeer::$fieldNames[RouterPeer::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        BasePeer::TYPE_PHPNAME => array ('Id', 'RouterId', 'Key', 'Value', ),
-        BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'routerId', 'key', 'value', ),
-        BasePeer::TYPE_COLNAME => array (HelixRouterArgumentPeer::ID, HelixRouterArgumentPeer::ROUTER_ID, HelixRouterArgumentPeer::KEY, HelixRouterArgumentPeer::VALUE, ),
-        BasePeer::TYPE_RAW_COLNAME => array ('ID', 'ROUTER_ID', 'KEY', 'VALUE', ),
-        BasePeer::TYPE_FIELDNAME => array ('id', 'router_id', 'key', 'value', ),
+        BasePeer::TYPE_PHPNAME => array ('Id', 'Active', 'Link', 'Action', ),
+        BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'active', 'link', 'action', ),
+        BasePeer::TYPE_COLNAME => array (RouterPeer::ID, RouterPeer::ACTIVE, RouterPeer::LINK, RouterPeer::ACTION, ),
+        BasePeer::TYPE_RAW_COLNAME => array ('ID', 'ACTIVE', 'LINK', 'ACTION', ),
+        BasePeer::TYPE_FIELDNAME => array ('id', 'active', 'link', 'action', ),
         BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
     );
 
@@ -75,14 +75,14 @@ abstract class BaseHelixRouterArgumentPeer
      * holds an array of keys for quick access to the fieldnames array
      *
      * first dimension keys are the type constants
-     * e.g. HelixRouterArgumentPeer::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
+     * e.g. RouterPeer::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'RouterId' => 1, 'Key' => 2, 'Value' => 3, ),
-        BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'routerId' => 1, 'key' => 2, 'value' => 3, ),
-        BasePeer::TYPE_COLNAME => array (HelixRouterArgumentPeer::ID => 0, HelixRouterArgumentPeer::ROUTER_ID => 1, HelixRouterArgumentPeer::KEY => 2, HelixRouterArgumentPeer::VALUE => 3, ),
-        BasePeer::TYPE_RAW_COLNAME => array ('ID' => 0, 'ROUTER_ID' => 1, 'KEY' => 2, 'VALUE' => 3, ),
-        BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'router_id' => 1, 'key' => 2, 'value' => 3, ),
+        BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Active' => 1, 'Link' => 2, 'Action' => 3, ),
+        BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'active' => 1, 'link' => 2, 'action' => 3, ),
+        BasePeer::TYPE_COLNAME => array (RouterPeer::ID => 0, RouterPeer::ACTIVE => 1, RouterPeer::LINK => 2, RouterPeer::ACTION => 3, ),
+        BasePeer::TYPE_RAW_COLNAME => array ('ID' => 0, 'ACTIVE' => 1, 'LINK' => 2, 'ACTION' => 3, ),
+        BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'active' => 1, 'link' => 2, 'action' => 3, ),
         BasePeer::TYPE_NUM => array (0, 1, 2, 3, )
     );
 
@@ -98,10 +98,10 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function translateFieldName($name, $fromType, $toType)
     {
-        $toNames = HelixRouterArgumentPeer::getFieldNames($toType);
-        $key = isset(HelixRouterArgumentPeer::$fieldKeys[$fromType][$name]) ? HelixRouterArgumentPeer::$fieldKeys[$fromType][$name] : null;
+        $toNames = RouterPeer::getFieldNames($toType);
+        $key = isset(RouterPeer::$fieldKeys[$fromType][$name]) ? RouterPeer::$fieldKeys[$fromType][$name] : null;
         if ($key === null) {
-            throw new PropelException("'$name' could not be found in the field names of type '$fromType'. These are: " . print_r(HelixRouterArgumentPeer::$fieldKeys[$fromType], true));
+            throw new PropelException("'$name' could not be found in the field names of type '$fromType'. These are: " . print_r(RouterPeer::$fieldKeys[$fromType], true));
         }
 
         return $toNames[$key];
@@ -118,11 +118,11 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function getFieldNames($type = BasePeer::TYPE_PHPNAME)
     {
-        if (!array_key_exists($type, HelixRouterArgumentPeer::$fieldNames)) {
+        if (!array_key_exists($type, RouterPeer::$fieldNames)) {
             throw new PropelException('Method getFieldNames() expects the parameter $type to be one of the class constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME, BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM. ' . $type . ' was given.');
         }
 
-        return HelixRouterArgumentPeer::$fieldNames[$type];
+        return RouterPeer::$fieldNames[$type];
     }
 
     /**
@@ -134,12 +134,12 @@ abstract class BaseHelixRouterArgumentPeer
      *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
      * </code>
      * @param      string $alias The alias for the current table.
-     * @param      string $column The column name for current table. (i.e. HelixRouterArgumentPeer::COLUMN_NAME).
+     * @param      string $column The column name for current table. (i.e. RouterPeer::COLUMN_NAME).
      * @return string
      */
     public static function alias($alias, $column)
     {
-        return str_replace(HelixRouterArgumentPeer::TABLE_NAME.'.', $alias.'.', $column);
+        return str_replace(RouterPeer::TABLE_NAME.'.', $alias.'.', $column);
     }
 
     /**
@@ -157,15 +157,15 @@ abstract class BaseHelixRouterArgumentPeer
     public static function addSelectColumns(Criteria $criteria, $alias = null)
     {
         if (null === $alias) {
-            $criteria->addSelectColumn(HelixRouterArgumentPeer::ID);
-            $criteria->addSelectColumn(HelixRouterArgumentPeer::ROUTER_ID);
-            $criteria->addSelectColumn(HelixRouterArgumentPeer::KEY);
-            $criteria->addSelectColumn(HelixRouterArgumentPeer::VALUE);
+            $criteria->addSelectColumn(RouterPeer::ID);
+            $criteria->addSelectColumn(RouterPeer::ACTIVE);
+            $criteria->addSelectColumn(RouterPeer::LINK);
+            $criteria->addSelectColumn(RouterPeer::ACTION);
         } else {
             $criteria->addSelectColumn($alias . '.id');
-            $criteria->addSelectColumn($alias . '.router_id');
-            $criteria->addSelectColumn($alias . '.key');
-            $criteria->addSelectColumn($alias . '.value');
+            $criteria->addSelectColumn($alias . '.active');
+            $criteria->addSelectColumn($alias . '.link');
+            $criteria->addSelectColumn($alias . '.action');
         }
     }
 
@@ -185,21 +185,21 @@ abstract class BaseHelixRouterArgumentPeer
         // We need to set the primary table name, since in the case that there are no WHERE columns
         // it will be impossible for the BasePeer::createSelectSql() method to determine which
         // tables go into the FROM clause.
-        $criteria->setPrimaryTableName(HelixRouterArgumentPeer::TABLE_NAME);
+        $criteria->setPrimaryTableName(RouterPeer::TABLE_NAME);
 
         if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
             $criteria->setDistinct();
         }
 
         if (!$criteria->hasSelectClause()) {
-            HelixRouterArgumentPeer::addSelectColumns($criteria);
+            RouterPeer::addSelectColumns($criteria);
         }
 
         $criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME); // Set the correct dbName
+        $criteria->setDbName(RouterPeer::DATABASE_NAME); // Set the correct dbName
 
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
         // BasePeer returns a PDOStatement
         $stmt = BasePeer::doCount($criteria, $con);
@@ -218,7 +218,7 @@ abstract class BaseHelixRouterArgumentPeer
      *
      * @param      Criteria $criteria object used to create the SELECT statement.
      * @param      PropelPDO $con
-     * @return                 HelixRouterArgument
+     * @return                 Router
      * @throws PropelException Any exceptions caught during processing will be
      *		 rethrown wrapped into a PropelException.
      */
@@ -226,7 +226,7 @@ abstract class BaseHelixRouterArgumentPeer
     {
         $critcopy = clone $criteria;
         $critcopy->setLimit(1);
-        $objects = HelixRouterArgumentPeer::doSelect($critcopy, $con);
+        $objects = RouterPeer::doSelect($critcopy, $con);
         if ($objects) {
             return $objects[0];
         }
@@ -244,7 +244,7 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function doSelect(Criteria $criteria, PropelPDO $con = null)
     {
-        return HelixRouterArgumentPeer::populateObjects(HelixRouterArgumentPeer::doSelectStmt($criteria, $con));
+        return RouterPeer::populateObjects(RouterPeer::doSelectStmt($criteria, $con));
     }
     /**
      * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -262,16 +262,16 @@ abstract class BaseHelixRouterArgumentPeer
     public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         if (!$criteria->hasSelectClause()) {
             $criteria = clone $criteria;
-            HelixRouterArgumentPeer::addSelectColumns($criteria);
+            RouterPeer::addSelectColumns($criteria);
         }
 
         // Set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
+        $criteria->setDbName(RouterPeer::DATABASE_NAME);
 
         // BasePeer returns a PDOStatement
         return BasePeer::doSelect($criteria, $con);
@@ -285,7 +285,7 @@ abstract class BaseHelixRouterArgumentPeer
      * to the cache in order to ensure that the same objects are always returned by doSelect*()
      * and retrieveByPK*() calls.
      *
-     * @param      HelixRouterArgument $obj A HelixRouterArgument object.
+     * @param      Router $obj A Router object.
      * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
      */
     public static function addInstanceToPool($obj, $key = null)
@@ -294,7 +294,7 @@ abstract class BaseHelixRouterArgumentPeer
             if ($key === null) {
                 $key = (string) $obj->getId();
             } // if key === null
-            HelixRouterArgumentPeer::$instances[$key] = $obj;
+            RouterPeer::$instances[$key] = $obj;
         }
     }
 
@@ -306,7 +306,7 @@ abstract class BaseHelixRouterArgumentPeer
      * methods in your stub classes -- you may need to explicitly remove objects
      * from the cache in order to prevent returning objects that no longer exist.
      *
-     * @param      mixed $value A HelixRouterArgument object or a primary key value.
+     * @param      mixed $value A Router object or a primary key value.
      *
      * @return void
      * @throws PropelException - if the value is invalid.
@@ -314,17 +314,17 @@ abstract class BaseHelixRouterArgumentPeer
     public static function removeInstanceFromPool($value)
     {
         if (Propel::isInstancePoolingEnabled() && $value !== null) {
-            if (is_object($value) && $value instanceof HelixRouterArgument) {
+            if (is_object($value) && $value instanceof Router) {
                 $key = (string) $value->getId();
             } elseif (is_scalar($value)) {
                 // assume we've been passed a primary key
                 $key = (string) $value;
             } else {
-                $e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or HelixRouterArgument object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+                $e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Router object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
                 throw $e;
             }
 
-            unset(HelixRouterArgumentPeer::$instances[$key]);
+            unset(RouterPeer::$instances[$key]);
         }
     } // removeInstanceFromPool()
 
@@ -335,14 +335,14 @@ abstract class BaseHelixRouterArgumentPeer
      * a multi-column primary key, a serialize()d version of the primary key will be returned.
      *
      * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-     * @return   HelixRouterArgument Found object or null if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+     * @return   Router Found object or null if 1) no instance exists for specified key or 2) instance pooling has been disabled.
      * @see        getPrimaryKeyHash()
      */
     public static function getInstanceFromPool($key)
     {
         if (Propel::isInstancePoolingEnabled()) {
-            if (isset(HelixRouterArgumentPeer::$instances[$key])) {
-                return HelixRouterArgumentPeer::$instances[$key];
+            if (isset(RouterPeer::$instances[$key])) {
+                return RouterPeer::$instances[$key];
             }
         }
 
@@ -358,16 +358,16 @@ abstract class BaseHelixRouterArgumentPeer
     {
       if ($and_clear_all_references)
       {
-        foreach (HelixRouterArgumentPeer::$instances as $instance)
+        foreach (RouterPeer::$instances as $instance)
         {
           $instance->clearAllReferences(true);
         }
       }
-        HelixRouterArgumentPeer::$instances = array();
+        RouterPeer::$instances = array();
     }
 
     /**
-     * Method to invalidate the instance pool of all tables related to Helix_router_argument
+     * Method to invalidate the instance pool of all tables related to Router
      * by a foreign key with ON DELETE CASCADE
      */
     public static function clearRelatedInstancePool()
@@ -421,11 +421,11 @@ abstract class BaseHelixRouterArgumentPeer
         $results = array();
 
         // set the class once to avoid overhead in the loop
-        $cls = HelixRouterArgumentPeer::getOMClass();
+        $cls = RouterPeer::getOMClass();
         // populate the object(s)
         while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $key = HelixRouterArgumentPeer::getPrimaryKeyHashFromRow($row, 0);
-            if (null !== ($obj = HelixRouterArgumentPeer::getInstanceFromPool($key))) {
+            $key = RouterPeer::getPrimaryKeyHashFromRow($row, 0);
+            if (null !== ($obj = RouterPeer::getInstanceFromPool($key))) {
                 // We no longer rehydrate the object, since this can cause data loss.
                 // See http://www.propelorm.org/ticket/509
                 // $obj->hydrate($row, 0, true); // rehydrate
@@ -434,7 +434,7 @@ abstract class BaseHelixRouterArgumentPeer
                 $obj = new $cls();
                 $obj->hydrate($row);
                 $results[] = $obj;
-                HelixRouterArgumentPeer::addInstanceToPool($obj, $key);
+                RouterPeer::addInstanceToPool($obj, $key);
             } // if key exists
         }
         $stmt->closeCursor();
@@ -448,262 +448,24 @@ abstract class BaseHelixRouterArgumentPeer
      * @param      int $startcol The 0-based offset for reading from the resultset row.
      * @throws PropelException Any exceptions caught during processing will be
      *		 rethrown wrapped into a PropelException.
-     * @return array (HelixRouterArgument object, last column rank)
+     * @return array (Router object, last column rank)
      */
     public static function populateObject($row, $startcol = 0)
     {
-        $key = HelixRouterArgumentPeer::getPrimaryKeyHashFromRow($row, $startcol);
-        if (null !== ($obj = HelixRouterArgumentPeer::getInstanceFromPool($key))) {
+        $key = RouterPeer::getPrimaryKeyHashFromRow($row, $startcol);
+        if (null !== ($obj = RouterPeer::getInstanceFromPool($key))) {
             // We no longer rehydrate the object, since this can cause data loss.
             // See http://www.propelorm.org/ticket/509
             // $obj->hydrate($row, $startcol, true); // rehydrate
-            $col = $startcol + HelixRouterArgumentPeer::NUM_HYDRATE_COLUMNS;
+            $col = $startcol + RouterPeer::NUM_HYDRATE_COLUMNS;
         } else {
-            $cls = HelixRouterArgumentPeer::OM_CLASS;
+            $cls = RouterPeer::OM_CLASS;
             $obj = new $cls();
             $col = $obj->hydrate($row, $startcol);
-            HelixRouterArgumentPeer::addInstanceToPool($obj, $key);
+            RouterPeer::addInstanceToPool($obj, $key);
         }
 
         return array($obj, $col);
-    }
-
-
-    /**
-     * Returns the number of rows matching criteria, joining the related HelixRouter table
-     *
-     * @param      Criteria $criteria
-     * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
-     * @param      PropelPDO $con
-     * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-     * @return int Number of matching rows.
-     */
-    public static function doCountJoinHelixRouter(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
-    {
-        // we're going to modify criteria, so copy it first
-        $criteria = clone $criteria;
-
-        // We need to set the primary table name, since in the case that there are no WHERE columns
-        // it will be impossible for the BasePeer::createSelectSql() method to determine which
-        // tables go into the FROM clause.
-        $criteria->setPrimaryTableName(HelixRouterArgumentPeer::TABLE_NAME);
-
-        if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-            $criteria->setDistinct();
-        }
-
-        if (!$criteria->hasSelectClause()) {
-            HelixRouterArgumentPeer::addSelectColumns($criteria);
-        }
-
-        $criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
-
-        // Set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
-
-        if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
-        }
-
-        $criteria->addJoin(HelixRouterArgumentPeer::ROUTER_ID, HelixRouterPeer::ID, $join_behavior);
-
-        $stmt = BasePeer::doCount($criteria, $con);
-
-        if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $count = (int) $row[0];
-        } else {
-            $count = 0; // no rows returned; we infer that means 0 matches.
-        }
-        $stmt->closeCursor();
-
-        return $count;
-    }
-
-
-    /**
-     * Selects a collection of HelixRouterArgument objects pre-filled with their HelixRouter objects.
-     * @param      Criteria  $criteria
-     * @param      PropelPDO $con
-     * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-     * @return array           Array of HelixRouterArgument objects.
-     * @throws PropelException Any exceptions caught during processing will be
-     *		 rethrown wrapped into a PropelException.
-     */
-    public static function doSelectJoinHelixRouter(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
-    {
-        $criteria = clone $criteria;
-
-        // Set the correct dbName if it has not been overridden
-        if ($criteria->getDbName() == Propel::getDefaultDB()) {
-            $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
-        }
-
-        HelixRouterArgumentPeer::addSelectColumns($criteria);
-        $startcol = HelixRouterArgumentPeer::NUM_HYDRATE_COLUMNS;
-        HelixRouterPeer::addSelectColumns($criteria);
-
-        $criteria->addJoin(HelixRouterArgumentPeer::ROUTER_ID, HelixRouterPeer::ID, $join_behavior);
-
-        $stmt = BasePeer::doSelect($criteria, $con);
-        $results = array();
-
-        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $key1 = HelixRouterArgumentPeer::getPrimaryKeyHashFromRow($row, 0);
-            if (null !== ($obj1 = HelixRouterArgumentPeer::getInstanceFromPool($key1))) {
-                // We no longer rehydrate the object, since this can cause data loss.
-                // See http://www.propelorm.org/ticket/509
-                // $obj1->hydrate($row, 0, true); // rehydrate
-            } else {
-
-                $cls = HelixRouterArgumentPeer::getOMClass();
-
-                $obj1 = new $cls();
-                $obj1->hydrate($row);
-                HelixRouterArgumentPeer::addInstanceToPool($obj1, $key1);
-            } // if $obj1 already loaded
-
-            $key2 = HelixRouterPeer::getPrimaryKeyHashFromRow($row, $startcol);
-            if ($key2 !== null) {
-                $obj2 = HelixRouterPeer::getInstanceFromPool($key2);
-                if (!$obj2) {
-
-                    $cls = HelixRouterPeer::getOMClass();
-
-                    $obj2 = new $cls();
-                    $obj2->hydrate($row, $startcol);
-                    HelixRouterPeer::addInstanceToPool($obj2, $key2);
-                } // if obj2 already loaded
-
-                // Add the $obj1 (HelixRouterArgument) to $obj2 (HelixRouter)
-                $obj2->addHelixRouterArgument($obj1);
-
-            } // if joined row was not null
-
-            $results[] = $obj1;
-        }
-        $stmt->closeCursor();
-
-        return $results;
-    }
-
-
-    /**
-     * Returns the number of rows matching criteria, joining all related tables
-     *
-     * @param      Criteria $criteria
-     * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
-     * @param      PropelPDO $con
-     * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-     * @return int Number of matching rows.
-     */
-    public static function doCountJoinAll(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
-    {
-        // we're going to modify criteria, so copy it first
-        $criteria = clone $criteria;
-
-        // We need to set the primary table name, since in the case that there are no WHERE columns
-        // it will be impossible for the BasePeer::createSelectSql() method to determine which
-        // tables go into the FROM clause.
-        $criteria->setPrimaryTableName(HelixRouterArgumentPeer::TABLE_NAME);
-
-        if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-            $criteria->setDistinct();
-        }
-
-        if (!$criteria->hasSelectClause()) {
-            HelixRouterArgumentPeer::addSelectColumns($criteria);
-        }
-
-        $criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
-
-        // Set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
-
-        if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
-        }
-
-        $criteria->addJoin(HelixRouterArgumentPeer::ROUTER_ID, HelixRouterPeer::ID, $join_behavior);
-
-        $stmt = BasePeer::doCount($criteria, $con);
-
-        if ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $count = (int) $row[0];
-        } else {
-            $count = 0; // no rows returned; we infer that means 0 matches.
-        }
-        $stmt->closeCursor();
-
-        return $count;
-    }
-
-    /**
-     * Selects a collection of HelixRouterArgument objects pre-filled with all related objects.
-     *
-     * @param      Criteria  $criteria
-     * @param      PropelPDO $con
-     * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-     * @return array           Array of HelixRouterArgument objects.
-     * @throws PropelException Any exceptions caught during processing will be
-     *		 rethrown wrapped into a PropelException.
-     */
-    public static function doSelectJoinAll(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
-    {
-        $criteria = clone $criteria;
-
-        // Set the correct dbName if it has not been overridden
-        if ($criteria->getDbName() == Propel::getDefaultDB()) {
-            $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
-        }
-
-        HelixRouterArgumentPeer::addSelectColumns($criteria);
-        $startcol2 = HelixRouterArgumentPeer::NUM_HYDRATE_COLUMNS;
-
-        HelixRouterPeer::addSelectColumns($criteria);
-        $startcol3 = $startcol2 + HelixRouterPeer::NUM_HYDRATE_COLUMNS;
-
-        $criteria->addJoin(HelixRouterArgumentPeer::ROUTER_ID, HelixRouterPeer::ID, $join_behavior);
-
-        $stmt = BasePeer::doSelect($criteria, $con);
-        $results = array();
-
-        while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-            $key1 = HelixRouterArgumentPeer::getPrimaryKeyHashFromRow($row, 0);
-            if (null !== ($obj1 = HelixRouterArgumentPeer::getInstanceFromPool($key1))) {
-                // We no longer rehydrate the object, since this can cause data loss.
-                // See http://www.propelorm.org/ticket/509
-                // $obj1->hydrate($row, 0, true); // rehydrate
-            } else {
-                $cls = HelixRouterArgumentPeer::getOMClass();
-
-                $obj1 = new $cls();
-                $obj1->hydrate($row);
-                HelixRouterArgumentPeer::addInstanceToPool($obj1, $key1);
-            } // if obj1 already loaded
-
-            // Add objects for joined HelixRouter rows
-
-            $key2 = HelixRouterPeer::getPrimaryKeyHashFromRow($row, $startcol2);
-            if ($key2 !== null) {
-                $obj2 = HelixRouterPeer::getInstanceFromPool($key2);
-                if (!$obj2) {
-
-                    $cls = HelixRouterPeer::getOMClass();
-
-                    $obj2 = new $cls();
-                    $obj2->hydrate($row, $startcol2);
-                    HelixRouterPeer::addInstanceToPool($obj2, $key2);
-                } // if obj2 loaded
-
-                // Add the $obj1 (HelixRouterArgument) to the collection in $obj2 (HelixRouter)
-                $obj2->addHelixRouterArgument($obj1);
-            } // if joined row not null
-
-            $results[] = $obj1;
-        }
-        $stmt->closeCursor();
-
-        return $results;
     }
 
     /**
@@ -715,7 +477,7 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function getTableMap()
     {
-        return Propel::getDatabaseMap(HelixRouterArgumentPeer::DATABASE_NAME)->getTable(HelixRouterArgumentPeer::TABLE_NAME);
+        return Propel::getDatabaseMap(RouterPeer::DATABASE_NAME)->getTable(RouterPeer::TABLE_NAME);
     }
 
     /**
@@ -723,9 +485,9 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function buildTableMap()
     {
-      $dbMap = Propel::getDatabaseMap(BaseHelixRouterArgumentPeer::DATABASE_NAME);
-      if (!$dbMap->hasTable(BaseHelixRouterArgumentPeer::TABLE_NAME)) {
-        $dbMap->addTableObject(new HelixRouterArgumentTableMap());
+      $dbMap = Propel::getDatabaseMap(BaseRouterPeer::DATABASE_NAME);
+      if (!$dbMap->hasTable(BaseRouterPeer::TABLE_NAME)) {
+        $dbMap->addTableObject(new RouterTableMap());
       }
     }
 
@@ -737,13 +499,13 @@ abstract class BaseHelixRouterArgumentPeer
      */
     public static function getOMClass($row = 0, $colnum = 0)
     {
-        return HelixRouterArgumentPeer::OM_CLASS;
+        return RouterPeer::OM_CLASS;
     }
 
     /**
-     * Performs an INSERT on the database, given a HelixRouterArgument or Criteria object.
+     * Performs an INSERT on the database, given a Router or Criteria object.
      *
-     * @param      mixed $values Criteria or HelixRouterArgument object containing data that is used to create the INSERT statement.
+     * @param      mixed $values Criteria or Router object containing data that is used to create the INSERT statement.
      * @param      PropelPDO $con the PropelPDO connection to use
      * @return mixed           The new primary key.
      * @throws PropelException Any exceptions caught during processing will be
@@ -752,22 +514,22 @@ abstract class BaseHelixRouterArgumentPeer
     public static function doInsert($values, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         if ($values instanceof Criteria) {
             $criteria = clone $values; // rename for clarity
         } else {
-            $criteria = $values->buildCriteria(); // build Criteria from HelixRouterArgument object
+            $criteria = $values->buildCriteria(); // build Criteria from Router object
         }
 
-        if ($criteria->containsKey(HelixRouterArgumentPeer::ID) && $criteria->keyContainsValue(HelixRouterArgumentPeer::ID) ) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key ('.HelixRouterArgumentPeer::ID.')');
+        if ($criteria->containsKey(RouterPeer::ID) && $criteria->keyContainsValue(RouterPeer::ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.RouterPeer::ID.')');
         }
 
 
         // Set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
+        $criteria->setDbName(RouterPeer::DATABASE_NAME);
 
         try {
             // use transaction because $criteria could contain info
@@ -784,9 +546,9 @@ abstract class BaseHelixRouterArgumentPeer
     }
 
     /**
-     * Performs an UPDATE on the database, given a HelixRouterArgument or Criteria object.
+     * Performs an UPDATE on the database, given a Router or Criteria object.
      *
-     * @param      mixed $values Criteria or HelixRouterArgument object containing data that is used to create the UPDATE statement.
+     * @param      mixed $values Criteria or Router object containing data that is used to create the UPDATE statement.
      * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
      * @return int             The number of affected rows (if supported by underlying database driver).
      * @throws PropelException Any exceptions caught during processing will be
@@ -795,35 +557,35 @@ abstract class BaseHelixRouterArgumentPeer
     public static function doUpdate($values, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
-        $selectCriteria = new Criteria(HelixRouterArgumentPeer::DATABASE_NAME);
+        $selectCriteria = new Criteria(RouterPeer::DATABASE_NAME);
 
         if ($values instanceof Criteria) {
             $criteria = clone $values; // rename for clarity
 
-            $comparison = $criteria->getComparison(HelixRouterArgumentPeer::ID);
-            $value = $criteria->remove(HelixRouterArgumentPeer::ID);
+            $comparison = $criteria->getComparison(RouterPeer::ID);
+            $value = $criteria->remove(RouterPeer::ID);
             if ($value) {
-                $selectCriteria->add(HelixRouterArgumentPeer::ID, $value, $comparison);
+                $selectCriteria->add(RouterPeer::ID, $value, $comparison);
             } else {
-                $selectCriteria->setPrimaryTableName(HelixRouterArgumentPeer::TABLE_NAME);
+                $selectCriteria->setPrimaryTableName(RouterPeer::TABLE_NAME);
             }
 
-        } else { // $values is HelixRouterArgument object
+        } else { // $values is Router object
             $criteria = $values->buildCriteria(); // gets full criteria
             $selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
         }
 
         // set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
+        $criteria->setDbName(RouterPeer::DATABASE_NAME);
 
         return BasePeer::doUpdate($selectCriteria, $criteria, $con);
     }
 
     /**
-     * Deletes all rows from the Helix_router_argument table.
+     * Deletes all rows from the Router table.
      *
      * @param      PropelPDO $con the connection to use
      * @return int             The number of affected rows (if supported by underlying database driver).
@@ -832,19 +594,19 @@ abstract class BaseHelixRouterArgumentPeer
     public static function doDeleteAll(PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
         $affectedRows = 0; // initialize var to track total num of affected rows
         try {
             // use transaction because $criteria could contain info
             // for more than one table or we could emulating ON DELETE CASCADE, etc.
             $con->beginTransaction();
-            $affectedRows += BasePeer::doDeleteAll(HelixRouterArgumentPeer::TABLE_NAME, $con, HelixRouterArgumentPeer::DATABASE_NAME);
+            $affectedRows += BasePeer::doDeleteAll(RouterPeer::TABLE_NAME, $con, RouterPeer::DATABASE_NAME);
             // Because this db requires some delete cascade/set null emulation, we have to
             // clear the cached instance *after* the emulation has happened (since
             // instances get re-added by the select statement contained therein).
-            HelixRouterArgumentPeer::clearInstancePool();
-            HelixRouterArgumentPeer::clearRelatedInstancePool();
+            RouterPeer::clearInstancePool();
+            RouterPeer::clearRelatedInstancePool();
             $con->commit();
 
             return $affectedRows;
@@ -855,9 +617,9 @@ abstract class BaseHelixRouterArgumentPeer
     }
 
     /**
-     * Performs a DELETE on the database, given a HelixRouterArgument or Criteria object OR a primary key value.
+     * Performs a DELETE on the database, given a Router or Criteria object OR a primary key value.
      *
-     * @param      mixed $values Criteria or HelixRouterArgument object or primary key or array of primary keys
+     * @param      mixed $values Criteria or Router object or primary key or array of primary keys
      *              which is used to create the DELETE statement
      * @param      PropelPDO $con the connection to use
      * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -868,32 +630,32 @@ abstract class BaseHelixRouterArgumentPeer
      public static function doDelete($values, PropelPDO $con = null)
      {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
         }
 
         if ($values instanceof Criteria) {
             // invalidate the cache for all objects of this type, since we have no
             // way of knowing (without running a query) what objects should be invalidated
             // from the cache based on this Criteria.
-            HelixRouterArgumentPeer::clearInstancePool();
+            RouterPeer::clearInstancePool();
             // rename for clarity
             $criteria = clone $values;
-        } elseif ($values instanceof HelixRouterArgument) { // it's a model object
+        } elseif ($values instanceof Router) { // it's a model object
             // invalidate the cache for this single object
-            HelixRouterArgumentPeer::removeInstanceFromPool($values);
+            RouterPeer::removeInstanceFromPool($values);
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks
-            $criteria = new Criteria(HelixRouterArgumentPeer::DATABASE_NAME);
-            $criteria->add(HelixRouterArgumentPeer::ID, (array) $values, Criteria::IN);
+            $criteria = new Criteria(RouterPeer::DATABASE_NAME);
+            $criteria->add(RouterPeer::ID, (array) $values, Criteria::IN);
             // invalidate the cache for this object(s)
             foreach ((array) $values as $singleval) {
-                HelixRouterArgumentPeer::removeInstanceFromPool($singleval);
+                RouterPeer::removeInstanceFromPool($singleval);
             }
         }
 
         // Set the correct dbName
-        $criteria->setDbName(HelixRouterArgumentPeer::DATABASE_NAME);
+        $criteria->setDbName(RouterPeer::DATABASE_NAME);
 
         $affectedRows = 0; // initialize var to track total num of affected rows
 
@@ -903,7 +665,7 @@ abstract class BaseHelixRouterArgumentPeer
             $con->beginTransaction();
 
             $affectedRows += BasePeer::doDelete($criteria, $con);
-            HelixRouterArgumentPeer::clearRelatedInstancePool();
+            RouterPeer::clearRelatedInstancePool();
             $con->commit();
 
             return $affectedRows;
@@ -914,13 +676,13 @@ abstract class BaseHelixRouterArgumentPeer
     }
 
     /**
-     * Validates all modified columns of given HelixRouterArgument object.
+     * Validates all modified columns of given Router object.
      * If parameter $columns is either a single column name or an array of column names
      * than only those columns are validated.
      *
      * NOTICE: This does not apply to primary or foreign keys for now.
      *
-     * @param      HelixRouterArgument $obj The object to validate.
+     * @param      Router $obj The object to validate.
      * @param      mixed $cols Column name or array of column names.
      *
      * @return mixed TRUE if all columns are valid or the error message of the first invalid column.
@@ -930,8 +692,8 @@ abstract class BaseHelixRouterArgumentPeer
         $columns = array();
 
         if ($cols) {
-            $dbMap = Propel::getDatabaseMap(HelixRouterArgumentPeer::DATABASE_NAME);
-            $tableMap = $dbMap->getTable(HelixRouterArgumentPeer::TABLE_NAME);
+            $dbMap = Propel::getDatabaseMap(RouterPeer::DATABASE_NAME);
+            $tableMap = $dbMap->getTable(RouterPeer::TABLE_NAME);
 
             if (! is_array($cols)) {
                 $cols = array($cols);
@@ -947,7 +709,7 @@ abstract class BaseHelixRouterArgumentPeer
 
         }
 
-        return BasePeer::doValidate(HelixRouterArgumentPeer::DATABASE_NAME, HelixRouterArgumentPeer::TABLE_NAME, $columns);
+        return BasePeer::doValidate(RouterPeer::DATABASE_NAME, RouterPeer::TABLE_NAME, $columns);
     }
 
     /**
@@ -955,23 +717,23 @@ abstract class BaseHelixRouterArgumentPeer
      *
      * @param      int $pk the primary key.
      * @param      PropelPDO $con the connection to use
-     * @return HelixRouterArgument
+     * @return Router
      */
     public static function retrieveByPK($pk, PropelPDO $con = null)
     {
 
-        if (null !== ($obj = HelixRouterArgumentPeer::getInstanceFromPool((string) $pk))) {
+        if (null !== ($obj = RouterPeer::getInstanceFromPool((string) $pk))) {
             return $obj;
         }
 
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
-        $criteria = new Criteria(HelixRouterArgumentPeer::DATABASE_NAME);
-        $criteria->add(HelixRouterArgumentPeer::ID, $pk);
+        $criteria = new Criteria(RouterPeer::DATABASE_NAME);
+        $criteria->add(RouterPeer::ID, $pk);
 
-        $v = HelixRouterArgumentPeer::doSelect($criteria, $con);
+        $v = RouterPeer::doSelect($criteria, $con);
 
         return !empty($v) > 0 ? $v[0] : null;
     }
@@ -981,31 +743,31 @@ abstract class BaseHelixRouterArgumentPeer
      *
      * @param      array $pks List of primary keys
      * @param      PropelPDO $con the connection to use
-     * @return HelixRouterArgument[]
+     * @return Router[]
      * @throws PropelException Any exceptions caught during processing will be
      *		 rethrown wrapped into a PropelException.
      */
     public static function retrieveByPKs($pks, PropelPDO $con = null)
     {
         if ($con === null) {
-            $con = Propel::getConnection(HelixRouterArgumentPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+            $con = Propel::getConnection(RouterPeer::DATABASE_NAME, Propel::CONNECTION_READ);
         }
 
         $objs = null;
         if (empty($pks)) {
             $objs = array();
         } else {
-            $criteria = new Criteria(HelixRouterArgumentPeer::DATABASE_NAME);
-            $criteria->add(HelixRouterArgumentPeer::ID, $pks, Criteria::IN);
-            $objs = HelixRouterArgumentPeer::doSelect($criteria, $con);
+            $criteria = new Criteria(RouterPeer::DATABASE_NAME);
+            $criteria->add(RouterPeer::ID, $pks, Criteria::IN);
+            $objs = RouterPeer::doSelect($criteria, $con);
         }
 
         return $objs;
     }
 
-} // BaseHelixRouterArgumentPeer
+} // BaseRouterPeer
 
 // This is the static code needed to register the TableMap for this table with the main Propel class.
 //
-BaseHelixRouterArgumentPeer::buildTableMap();
+BaseRouterPeer::buildTableMap();
 
