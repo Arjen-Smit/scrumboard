@@ -7,7 +7,7 @@
             "homepage": "http://www.alnitak.nl"
     }],
     "config": {
-        "vendor-dir": "Helix/Externals"
+        "vendor-dir": "vendor"
     },
     "require": {
         "propel/propel1": "~1.6",

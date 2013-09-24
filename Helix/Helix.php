@@ -61,7 +61,7 @@ class Helix {
      * Initialize Propel
      */
     protected function InitializePropel() {
-        require_once __DIR__ . "/Externals/propel/propel1/runtime/lib/Propel.php";
+        require_once __DIR__ . "/../vendor/propel/propel1/runtime/lib/Propel.php";
         Propel::init(__DIR__ . "/Propel/conf.php");
     }
     
@@ -71,7 +71,7 @@ class Helix {
      * Loads the autoloader from the External files
      */
     protected function autoLoadExternals() {
-        include_once __DIR__ . "/Externals/autoload.php";
+        include_once __DIR__ . "/../vendor/autoload.php";
     }
     
     protected function setApp() {
