@@ -2,6 +2,7 @@ TODO:
 
 
 - Move /Helix/Externals back to /vendor
+- Remove /vendor packages from git
 - Move the router out of the database to a class to use it more flexable and faster.
 - Implement Guard, with composer
 - Search for a javascript optimizer for guard, that can handle jQuery maybe https://github.com/imathis/guard-stitch-plus
