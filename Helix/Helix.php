@@ -12,18 +12,10 @@ class Helix {
      * @var Silex\Application 
      */
     protected $app;
-    
-    /**
-     *
-     * @var Twig_Environment
-     */
-    protected $twig;
-    
-    
+           
     public function __construct($debug = false) {
         $this->debug = $debug;
     }
-
 
     /**
      * init
@@ -36,10 +28,12 @@ class Helix {
         $this->setIncludePath();
         
         $this->setApp();
-//        $this->setTwig();
     }
     
-        
+    /**
+     * Run some stuff, yeah really I love to comment :P
+     * 
+     */    
     public function run() {
         $this->loadRouters();
         $this->app->run();
@@ -83,17 +77,4 @@ class Helix {
             $this->app->get($route->getLink(), $route->getAction());
         }        
     }
-    
-    protected function setTwig() {
-        /* Load Twig */
-        $loader = new Twig_Loader_Filesystem(__DIR__ . "/Templates");
-        $twig_settings = array();
-        
-        if(!$this->debug) {
-            $twig_settings['cache'] = __DIR__ . "/Cache";
-        }
-                
-        $this->twig = new Twig_Environment($loader, $twig_settings);
-    }
-
  }
