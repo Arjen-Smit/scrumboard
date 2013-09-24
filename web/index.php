@@ -6,10 +6,8 @@
  * @todo remove this file and resolve this with the .htaccess
  */
 
-include_once __DIR__ . "/Helix/Helix.php";
+include_once __DIR__ . "/../Helix/Helix.php";
 
 $helix = new Helix(true);
 $helix->init();
 $helix->run();
-
-?>
