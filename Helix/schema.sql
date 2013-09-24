@@ -18,34 +18,18 @@ CREATE TABLE `pbi`
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
--- Helix_router
+-- Router
 -- ---------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Helix_router`;
+DROP TABLE IF EXISTS `Router`;
 
-CREATE TABLE `Helix_router`
+CREATE TABLE `Router`
 (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `active` TINYINT(1) DEFAULT 0,
-    `seolink` VARCHAR(255) NOT NULL,
-    `module` VARCHAR(255) NOT NULL,
+    `link` VARCHAR(255) NOT NULL,
+    `action` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=MyISAM;
-
--- ---------------------------------------------------------------------
--- Helix_router_argument
--- ---------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `Helix_router_argument`;
-
-CREATE TABLE `Helix_router_argument`
-(
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `router_id` INTEGER NOT NULL,
-    `key` VARCHAR(32),
-    `value` VARCHAR(255),
-    PRIMARY KEY (`id`),
-    INDEX `Helix_router_argument_FI_1` (`router_id`)
 ) ENGINE=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier

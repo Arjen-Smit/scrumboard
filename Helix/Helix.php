@@ -36,13 +36,12 @@ class Helix {
         $this->setIncludePath();
         
         $this->setApp();
-        $this->setTwig();
+//        $this->setTwig();
     }
     
         
     public function run() {
         $this->loadRouters();
-        
         $this->app->run();
     }
     
@@ -80,16 +79,9 @@ class Helix {
     }
     
     protected function loadRouters() {
-        foreach(HelixRouterQuery::create()->filterByActive(true)->find() as $router) {
-            if ($router instanceof HelixRouter) {
-                $controllerClass = $router->getModule();
-                $viewClass = $this->twig;
-                $this->app->get($router->getSeolink(), function() use($viewClass, $controllerClass) {
-                    $controller = new $controllerClass($viewClass);
-                    return $controller->run();
-                });
-            }
-        }
+        foreach(RouterQuery::create()->filterByActive(true)->find() as $route) {
+            $this->app->get($route->getLink(), $route->getAction());
+        }        
     }
     
     protected function setTwig() {

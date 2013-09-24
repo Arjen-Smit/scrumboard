@@ -5,19 +5,10 @@
         <column name="title" type="varchar" size="32" required="false"/>
         <column name="description" type="varchar" size="255" required="false"/>
     </table>
-    <table name='Helix_router' phpName="HelixRouter">
+    <table name='Router' phpName="Router">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="active" type="boolean" required="false" default="false"/>
-        <column name="seolink" type="varchar" size="255" required="true"/>
-        <column name="module" type="varchar" size="255" required="true"/>
-    </table>
-    <table name="Helix_router_argument" phpName="HelixRouterArgument">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="router_id" type="integer" required="true"/>
-        <column name="key" type="varchar" size="32"/>
-        <column name="value" type="varchar" size="255"/>
-        <foreign-key foreignTable="Helix_router" phpName="HelixRouter">
-            <reference local="router_id" foreign="id"/>
-        </foreign-key>
+        <column name="link" type="varchar" size="255" required="true"/>
+        <column name="action" type="varchar" size="255" required="true"/>
     </table>
 </database>

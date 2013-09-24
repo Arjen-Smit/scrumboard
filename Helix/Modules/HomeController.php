@@ -12,16 +12,13 @@ namespace Helix\Modules;
  *
  * @author arjen
  */
-class Home extends \Helix\Modules\BaseController {
-
-    protected function getTemplate() {
-        return "home.html.twig";
+class HomeController extends \Helix\Modules\BaseController {
+    
+    public function Html(\Symfony\Component\HttpFoundation\Request $request, \Silex\Application $app) {
+        return "<h1>Cool</h1>";        
     }
     
-    protected function draw() {
-        $view = array();
-        return $this->view->render($this->getTemplate(), array('view' => $view));
+    public function API(\Symfony\Component\HttpFoundation\Request $request, \Silex\Application $app) {
+        return "request";
     }
 }
-
-?>

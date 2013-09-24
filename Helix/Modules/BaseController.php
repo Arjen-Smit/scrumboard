@@ -5,6 +5,9 @@
  * and open the template in the editor.
  */
 
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+
 namespace Helix\Modules;
 
 /**
@@ -14,32 +17,4 @@ namespace Helix\Modules;
  */
 class BaseController {
     
-    protected $view;
-    
-    protected $settings;
-         
-    public function __construct($view, $arguments = null) {
-        $this->view = $view;
-        if (isset($arguments)) {
-            $this->arguments = $arguments;
-        }
-    }
-    
-    public function run() {
-        $this->prepare();
-        $this->execute();
-        return $this->draw();
-    }
-    
-    protected function prepare() {
-        
-    }
-    
-    protected function execute() {
-        
-    }
-    
-    protected function draw() {
-        
-    }
 }
