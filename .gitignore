@@ -1,3 +1,5 @@
-/nbproject/private/
-/Helix/Externals/
+/nbproject/
 /vendor/
+/Gemfile.lock
+/composer.lock
+/.sass-cache/

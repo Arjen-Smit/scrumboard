@@ -1,4 +1,4 @@
-output_style = :compressed
+output_style = :expanded
 
 http_path = 'web/'
 

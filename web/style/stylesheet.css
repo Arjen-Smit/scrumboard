@@ -1,1 +1,62 @@
-html,body{margin:0px;padding:0px;font-family:'Droid Sans', sans-serif}header{height:40px;line-height:40px;background-color:#F3F3F3;background-image:linear-gradient(#f9f9f9,#f3f3f3);background-repeat:repeat-x;border-bottom:1px solid #E5E5E5;text-shadow:0 1px 0 #FFFFFF}header div.wrapper{padding:0px 20px}div.content p{padding:0px 20px;color:#414141}header ul li{display:inline-block}
+/* line 7, ../../guard/sass/stylesheet.scss */
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Droid Sans', sans-serif;
+  color: #414141; }
+
+/* line 14, ../../guard/sass/stylesheet.scss */
+header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(#f9f9f9, #f3f3f3);
+  background-repeat: repeat-x;
+  border-bottom: 1px solid #E5E5E5;
+  text-shadow: 0 1px 0 #FFFFFF; }
+/* line 22, ../../guard/sass/stylesheet.scss */
+header div.wrapper {
+  padding: 0px 20px; }
+/* line 25, ../../guard/sass/stylesheet.scss */
+header h1 {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin: 0px;
+  line-height: 60px;
+  font-weight: normal;
+  color: #4e7bf0; }
+/* line 32, ../../guard/sass/stylesheet.scss */
+header h1 strong {
+  font-weight: bold;
+  color: black; }
+/* line 37, ../../guard/sass/stylesheet.scss */
+header ul {
+  padding: 0px;
+  margin: 0px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline; }
+/* line 41, ../../guard/sass/stylesheet.scss */
+header ul li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  color: red;
+  padding: 0px 10px;
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #E5E5E5; }
+
+/* line 52, ../../guard/sass/stylesheet.scss */
+div.content p {
+  padding: 0px 20px;
+  color: #414141; }

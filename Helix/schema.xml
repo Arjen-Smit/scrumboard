@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name='scrumboard' defaultIdMethod="native">
-    <table name="pbi" phpName="Pbi">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="title" type="varchar" size="32" required="false"/>
-        <column name="description" type="varchar" size="255" required="false"/>
-    </table>
     <table name='Router' phpName="Router">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="active" type="boolean" required="false" default="false"/>
         <column name="link" type="varchar" size="255" required="true"/>
         <column name="action" type="varchar" size="255" required="true"/>
+    </table>
+    <table name='Customer' phpName='Customer'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255"/>
+    </table>
+    <table name='User' phpName='User'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="username" type="varchar" size="255"/>
+        <column name="password" type="varchar" size="64"/>
+        <column name="fullname" type="varchar" size="255"/>
+        <column name="email" type="varchar" size="128"/>
+    </table>
+    <table name='Group' phpName='Group'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="32"/>
+    </table>
+    <table name='User_Group' phpName='UserGroup'>
+        <column name="user_id" type="integer" required="true"/>
+        <column name="group_id" type="integer" required="true"/>
+    </table>
+    <table name='Project' phpName='Project'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="128"/>
+    </table>
+    <table name='Sprint' phpName='Sprint'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="project_id" type="integer" required="true"/>
+        <column name="name" type="varchar" size="128"/>
+    </table>
+    <table name='Note' phpName='Note'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="title" type="varchar" size="128"/>
+        <column name="title" type="varchar" size="128"/>
     </table>
 </database>
