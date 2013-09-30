@@ -2,6 +2,4 @@ TODO:
 
 - Search for a javascript optimizer for guard, that can handle jQuery maybe https://github.com/imathis/guard-stitch-plus
 - Look for Javascript MVC
-    - http://backbonejs.org/
-    - http://www.javascriptmvc.com/
     - http://angularjs.org/
