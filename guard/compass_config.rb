@@ -1,3 +1,5 @@
+#http://compass-style.org/help/tutorials/configuration-reference/ 
+
 output_style = :expanded
 
 http_path = 'web/'
