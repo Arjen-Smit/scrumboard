@@ -1,0 +1,13 @@
+[
+    {
+        "active": true,
+        "link": "/",
+        "action": "Helix\\Modules\\HomeController::Html"
+    }, 
+    {
+        "active": true,
+        "link": "/api/",
+        "action": "Helix\\Modules\\HomeController::Api"
+    }
+]
+
