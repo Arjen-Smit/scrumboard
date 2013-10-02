@@ -12,12 +12,12 @@
     "require": {
         "propel/propel1": "~1.6",
         "twig/twig": "1.*",
-	"silex/silex": "1.0.*@dev",
-        "imagine/Imagine": "0.4.*",
-        "knplabs/knp-snappy": "dev-master",
-        "grom/silex-service-provider": "dev-master"
+	"silex/silex": "1.0.*@dev"
     },
     "autoload": {
-        "psr-0": {"Helix\\Modules": "."}
+        "psr-0": {
+            "Helix\\Modules": ".",
+            "Helix\\Framework": "."
+            }
     }
 }

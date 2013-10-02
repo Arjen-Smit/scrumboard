@@ -73,8 +73,12 @@ class Helix {
     }
     
     protected function loadRouters() {
-        foreach(RouterQuery::create()->filterByActive(true)->find() as $route) {
-            $this->app->get($route->getLink(), $route->getAction());
-        }        
+        $routers = \Helix\Framework\HelixConfig::init()->getRouter();
+        foreach($routers as $route) {
+            if ($route->active) {
+                $request = $route->request;
+                $this->app->$request($route->link, $route->action);
+            }
+        }
     }
  }

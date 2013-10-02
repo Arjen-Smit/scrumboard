@@ -1,13 +1,20 @@
 [
     {
         "active": true,
+        "request": "get",
         "link": "/",
         "action": "Helix\\Modules\\HomeController::Html"
     }, 
     {
         "active": true,
-        "link": "/api/",
-        "action": "Helix\\Modules\\HomeController::Api"
+        "request": "get",
+        "link": "/angular",
+        "action": "Helix\\Modules\\HomeController::Angular"
+    }, 
+    {
+        "active": true,
+        "request": "post",
+        "link": "/api/{version}/{crud}/{function}/",
+        "action": "Helix\\Modules\\ApiController::Request"
     }
 ]
-
