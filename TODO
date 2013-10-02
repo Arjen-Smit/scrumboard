@@ -1,8 +1,8 @@
 TODO:
 
-- Search for a javascript optimizer for guard, that can handle jQuery maybe https://github.com/imathis/guard-stitch-plus
+
 - Create api call to request notes
 - Implement Angular.js
 - Create first app showing stickynotes
 
-
+- Search for a javascript optimizer for guard, that can handle jQuery maybe https://github.com/imathis/guard-stitch-plus
