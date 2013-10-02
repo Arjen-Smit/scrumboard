@@ -6,39 +6,22 @@
     <body>
         <header>
             <div class='wrapper'>
-                <ul>
-                    <li>
-                        <a href='/'>
-                            <h1 class='header_title'><strong>Scrum</strong>board</h1>
-                        </a>
-                    </li>
-                    <li>
-                        <select>
-                            <option>Project 1</option>
-                            <option>Project 2</option>
-                            <option>Project 3</option>
-                        </select>
-                    </li><li>
-                        <a href='/'>Overview</a>
-                    </li><li>
-                        <a href='/'>Overview</a>
-                    </li><li>
-                        <a href='/'>Overview</a>
-                    </li><li>
-                        <a href='/'>Overview</a>
-                    </li>
-                    
-                </ul>
+                <a href='/'>
+                    <h1 class='header_title'><strong>Scrum</strong>board</h1>
+                </a>        
             </div>
         </header>
-        <div class='content'>
-            <form action='/api/v1/post/login/' method='post'>
-                <input type='text' name='username' placeholder='Username'>
-                <input type='password' name='password' placeholder='Password'>
-                <input type='submit' value='Login'>
-            </form>
+        <div class='content' ng-app="scrumboardApp">
+            <div ng-controller="overviewCtrl">
+                <div ng-repeat="note in StickyNotes.data">
+                    <label>{{note.title}}</label>
+                </div>
+            </div>
         </div>
         <link rel="stylesheet" href="/style/stylesheet.css" type="text/css" />
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+        <script language="Javascript" type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+        <script language="Javascript" type="text/javascript" src="/js/angular.min.js"></script>
+        <script language="Javascript" type="text/javascript" src="/js/site.js"></script>
     </body>
 </html>
