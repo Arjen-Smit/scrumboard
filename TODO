@@ -1,7 +1,6 @@
 TODO:
 
 - Search for a javascript optimizer for guard, that can handle jQuery maybe https://github.com/imathis/guard-stitch-plus
-- Look for Javascript MVC
-    - http://angularjs.org/
+- Implement Angular
+- Create api call to retrieve notes
 
-- Remove Twig, (backend will only deliver json)
