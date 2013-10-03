@@ -1,0 +1,141 @@
+@mixin stickybg($color) {
+    @include background-image(radial-gradient(45px 45px, $color 0px, darken($color,10) 150px));
+}
+
+.stickyNote {
+    @include inline-block(top);
+    @include background-image(radial-gradient(45px 45px, #FCF0AD 0px, darken(#FCF0AD,20) 150px));
+    border: 1px solid #444444;
+    box-shadow: 2px 2px 3px #888888;
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    color: #4A009A;
+    &.neon { 
+        &.color-1 {
+            @include stickybg(#E9E74A);
+        }
+        &.color-2 {
+            @include stickybg(#EE5E9F);
+        }
+        &.color-3 {
+            @include stickybg(#FFDD2A);
+        }
+        &.color-4 {
+            @include stickybg(#F59DB9);
+        }
+        &.color-5 {
+            @include stickybg(#F9A55B);
+        }
+    }
+    &.ultra {
+        &.color-1 {
+            @include stickybg(#D0E17D);
+        }
+        &.color-2 {
+            @include stickybg(#36A9CE);
+        }
+        &.color-3 {
+            @include stickybg(#EF5AA1);
+        }
+        &.color-4 {
+            @include stickybg(#AE86BC);
+        }
+        &.color-5 {
+            @include stickybg(#FFDF25);
+        }
+    }
+    &.tropical {
+
+        &.color-1 {
+            @include stickybg(#56C4E8);
+        }
+        &.color-2 {
+            @include stickybg(#D0E068);
+        }
+        &.color-3 {
+            @include stickybg(#CD9EC0);
+        }
+        &.color-4 {
+            @include stickybg(#ED839D);
+        }
+        &.color-5 {
+            @include stickybg(#FFE476);
+        }
+    }
+    &.samba {
+        &.color-1 {
+            @include stickybg(#CDDD73);
+        }
+        &.color-2 {
+            @include stickybg(#F35F6D);
+        }
+        &.color-3 {
+            @include stickybg(#FAA457);
+        }
+        &.color-4 {
+            @include stickybg(#35BEB7);
+        }
+        &.color-5 {
+            @include stickybg(#D189B9);
+        }
+    }
+
+    &.aquatic {
+        &.color-1 {
+            @include stickybg(#99C7BC);
+        }
+        &.color-2 {
+            @include stickybg(#89B18C);
+        }
+        &.color-3 {
+            @include stickybg(#738FA7);
+        }
+        &.color-4 {
+            @include stickybg(#8A8FA3);
+        }
+        &.color-5 {
+            @include stickybg(#82ACB8);
+        }
+    }
+
+    &.sunbrite {
+        &.color-1 {
+            @include stickybg(#F9D6AC);
+        }
+        &.color-2 {
+            @include stickybg(#E9B561);
+        }
+        &.color-3 {
+            @include stickybg(#E89132);
+        }
+        &.color-4 {
+            @include stickybg(#DA7527);
+        }
+        &.color-5 {
+            @include stickybg(#DEAC2F);
+        }
+    }
+
+    &.classic {
+        &.color-1 {
+            @include stickybg(#BAB7A9);
+        }
+        &.color-2 {
+            @include stickybg(#BFB4AF);
+        }
+        &.color-3 {
+            @include stickybg(#CDC4C1);
+        }
+        &.color-4 {
+            @include stickybg(#CFB69E);
+        }
+        &.color-5 {
+            @include stickybg(#D0AD87);
+        }
+    }
+}
+

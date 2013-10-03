@@ -8,13 +8,7 @@
     {
         "active": true,
         "request": "get",
-        "link": "/angular",
-        "action": "Helix\\Modules\\HomeController::Angular"
-    }, 
-    {
-        "active": true,
-        "request": "post",
-        "link": "/api/{version}/{crud}/{function}/",
+        "link": "/api/getNotes",
         "action": "Helix\\Modules\\ApiController::Request"
     }
 ]

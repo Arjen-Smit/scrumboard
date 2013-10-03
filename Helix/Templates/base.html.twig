@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="scrumboardApp">
     <head>
         <title>Scrumboard</title>
+        <link rel="stylesheet" href="/style/stylesheet.css" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Indie+Flower|Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+        <script language="Javascript" type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+        <script language="Javascript" type="text/javascript" src="/js/angular.min.js"></script>
+        <script language="Javascript" type="text/javascript" src="/js/site.js"></script>
     </head>
     <body>
         <header>
@@ -11,17 +16,10 @@
                 </a>        
             </div>
         </header>
-        <div class='content' ng-app="scrumboardApp">
-            <div ng-controller="overviewCtrl">
-                <div ng-repeat="note in StickyNotes.data">
-                    <label>{{note.title}}</label>
-                </div>
+        <div class='content'>
+            <div class='overview' ng-controller="overviewCtrl">
+                <sticky-note ng-repeat="note in notes.data"></sticky-note>
             </div>
         </div>
-        <link rel="stylesheet" href="/style/stylesheet.css" type="text/css" />
-        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
-        <script language="Javascript" type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
-        <script language="Javascript" type="text/javascript" src="/js/angular.min.js"></script>
-        <script language="Javascript" type="text/javascript" src="/js/site.js"></script>
     </body>
 </html>
