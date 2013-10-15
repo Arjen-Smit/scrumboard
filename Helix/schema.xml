@@ -1,42 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name='scrumboard' defaultIdMethod="native">
-    <table name='Router' phpName="Router">
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="active" type="boolean" required="false" default="false"/>
-        <column name="link" type="varchar" size="255" required="true"/>
-        <column name="action" type="varchar" size="255" required="true"/>
-    </table>
-    <table name='Customer' phpName='Customer'>
+<database name='scrumboard' defaultIdMethod="native" namespace="ScrumBoard">
+    <table name='company' phpName='Customer'>
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="255"/>
     </table>
-    <table name='User' phpName='User'>
+    <table name='user' phpName='User'>
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="username" type="varchar" size="255"/>
         <column name="password" type="varchar" size="64"/>
         <column name="fullname" type="varchar" size="255"/>
         <column name="email" type="varchar" size="128"/>
+        <column name="company_id" type="integer"/>
+        <foreign-key foreignTable="company">
+            <reference local="company_id" foreign="id"/>
+        </foreign-key>
     </table>
-    <table name='Group' phpName='Group'>
+   <table name='group' phpName='Group'>
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="32"/>
     </table>
-    <table name='User_Group' phpName='UserGroup'>
-        <column name="user_id" type="integer" required="true"/>
-        <column name="group_id" type="integer" required="true"/>
+    <table name='user_group' phpName='UserGroup'>
+        <column name="user_id" type="integer" primaryKey="true" required="true"/>
+        <column name="group_id" type="integer" primaryKey="true" required="true"/>
+        <unique>
+            <unique-column name="user_id"/>
+            <unique-column name="group_id"/>
+        </unique>
+        <foreign-key foreignTable="user">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group">
+            <reference local="group_id" foreign="id"/>
+        </foreign-key>
     </table>
-    <table name='Project' phpName='Project'>
+    <table name='project' phpName='Project'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="company_id" type="integer"/>
+        <column name="name" type="varchar" size="255"/>
+        <foreign-key foreignTable="company">
+            <reference local="company_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name='project_user' phpName='ProjectUser'>
+        <column name="user_id" type="integer" primaryKey="true" required="true"/>
+        <column name="project_id" type="integer" primaryKey="true" required="true"/>
+        <unique>
+            <unique-column name="user_id"/>
+            <unique-column name="project_id"/>
+        </unique>
+        <foreign-key foreignTable="user">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="project">
+            <reference local="project_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name='project_tab' phpName='ProjectTab'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255"/>
+        <column name="position" type="integer"/>
+        <column name="project_id" type="integer"/>
+        <foreign-key foreignTable="project">
+            <reference local="project_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name='project_story' phpName='ProjectStory'>
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="position" type="integer"/>
+        <column name="text" type="varchar" size="255"/>
+        <column name="time_estimate" type="float"/>
+        <column name="time_spend" type="float"/>
+        <column name="owner_id" type="integer"/>
+        <column name="appointed_id" type="integer"/>
+        <column name="project_id" type="integer"/>
+        <column name="project_tab_id" type="integer"/>
+        <foreign-key foreignTable="user">
+            <reference local="owner_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="user">
+            <reference local="appointed_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="project">
+            <reference local="project_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="project_tab">
+            <reference local="project_tab_id" foreign="id"/>
+        </foreign-key>
+        <behavior name="timestampable" />
+    </table>
+    
+    
+    
+    <!--    <table name='project' phpName='Project'>
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="name" type="varchar" size="128"/>
     </table>
-    <table name='Sprint' phpName='Sprint'>
-        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <column name="project_id" type="integer" required="true"/>
-        <column name="name" type="varchar" size="128"/>
-    </table>
-    <table name='Note' phpName='Note'>
+    <table name='story' phpName='Story'>
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
         <column name="title" type="varchar" size="128"/>
-        <column name="title" type="varchar" size="128"/>
-    </table>
+    </table>-->
 </database>

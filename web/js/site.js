@@ -8,7 +8,7 @@ angular.module('components', [])
      
 var scrumboardApp = angular.module('scrumboardApp', ['components']);     
 scrumboardApp.factory('StickyNotes', function($http) {
-    var StickyNotes = $http.get('/api/getNotes').success(function(response) {
+    var StickyNotes = $http.get('/api/v1/stories').success(function(response) {
        return response;
     });
     

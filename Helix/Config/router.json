@@ -3,12 +3,49 @@
         "active": true,
         "request": "get",
         "link": "/",
-        "action": "Helix\\Modules\\HomeController::Html"
+        "action": "Helix\\Controller\\HomeController::Html"
     }, 
     {
         "active": true,
         "request": "get",
-        "link": "/api/getNotes",
-        "action": "Helix\\Modules\\ApiController::Request"
+        "link": "/api/v1/{module}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    },
+    {
+        "active": true,
+        "request": "post",
+        "link": "/api/v1/{module}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    }, 
+    {
+        "active": true,
+        "request": "get",
+        "link": "/api/v1/{module}/{id}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    },
+    {
+        "active": true,
+        "request": "post",
+        "link": "/api/v1/{module}/{id}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    },
+    {
+        "active": true,
+        "request": "get",
+        "link": "/api/v1/{module}/{id}/{action}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    },
+    {
+        "active": true,
+        "request": "post",
+        "link": "/api/v1/{module}/{id}/{action}",
+        "action": "Helix\\Controller\\ApiController::Request"
+    },
+    {
+        "active": true,
+        "request": "post",
+        "link": "/login",
+        "action": "Helix\\Controller\\LoginController::Login"
     }
+    
 ]

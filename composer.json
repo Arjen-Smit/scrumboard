@@ -16,6 +16,7 @@
     },
     "autoload": {
         "psr-0": {
+            "Helix\\Controller": ".",
             "Helix\\Modules": ".",
             "Helix\\Framework": "."
             }

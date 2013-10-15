@@ -16,10 +16,12 @@
                 </a>        
             </div>
         </header>
-        <div class='content'>
-            <div class='overview' ng-controller="overviewCtrl">
-                <sticky-note ng-repeat="note in notes.data"></sticky-note>
-            </div>
-        </div>
+            {% block content %}
+                <div class='content'>
+                    <div class='overview' ng-controller="overviewCtrl">
+                        <sticky-note ng-repeat="note in notes.data"></sticky-note>
+                    </div>
+                </div>
+            {% endblock %}
     </body>
 </html>

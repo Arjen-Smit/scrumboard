@@ -1,5 +1,13 @@
 <?php
 
+namespace Helix;
+
+
+use Silex\Application;
+use Silex\Provider\SessionServiceProvider;
+use Helix\Framework\HelixConfig;
+use ScrumBoard;
+
 class Helix {
     /**
      * if debug mode will output stuff
@@ -24,8 +32,8 @@ class Helix {
      */
     public function init() {
         $this->autoLoadExternals();
-        $this->InitializePropel();
         $this->setIncludePath();
+        $this->InitializePropel();
         
         $this->setApp();
     }
@@ -36,6 +44,7 @@ class Helix {
      */    
     public function run() {
         $this->loadRouters();
+        $this->setSessionProvider();
         $this->app->run();
     }
     
@@ -55,7 +64,7 @@ class Helix {
      */
     protected function InitializePropel() {
         require_once __DIR__ . "/../vendor/propel/propel1/runtime/lib/Propel.php";
-        Propel::init(__DIR__ . "/Propel/conf.php");
+        \Propel::init(__DIR__ . "/Propel/conf.php");
     }
     
     /**
@@ -68,17 +77,21 @@ class Helix {
     }
     
     protected function setApp() {
-        $this->app = new Silex\Application();
+        $this->app = new Application();
         $this->app['debug'] = $this->debug;
     }
     
     protected function loadRouters() {
-        $routers = \Helix\Framework\HelixConfig::init()->getRouter();
+        $routers = HelixConfig::init()->getRouter();
         foreach($routers as $route) {
             if ($route->active) {
                 $request = $route->request;
                 $this->app->$request($route->link, $route->action);
             }
         }
+    }
+    
+    protected function setSessionProvider() {
+        $this->app->register(new SessionServiceProvider() );
     }
  }
