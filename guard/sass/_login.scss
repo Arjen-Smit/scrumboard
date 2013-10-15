@@ -1,0 +1,19 @@
+div.authenticate {
+    width: 300px;
+    margin: 50px auto;
+    padding: 25px;
+    @include box-sizing(border-box);
+    
+    input {
+        width: 100%;
+        @include box-sizing(border-box);
+        border: 1px solid black;
+        height: 30px;
+        padding: 5px;
+        margin: 5px 0px;
+        &[type="submit"] {
+            background-color: #4E7BF0;
+            color: white;
+        }
+    }
+}

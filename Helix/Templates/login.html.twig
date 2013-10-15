@@ -1,9 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-<form action='/login' method='post'>
-    <input type='text' name='username' placeholder='Username'/>
-    <input type='password' name='password' placeholder='Password'/>
-    <input type='submit' value='Login'/>
-</form>
+<div class='authenticate'>
+    <form action='/login' method='post'>
+        <input type='text' name='username' placeholder='Username'/>
+        <input type='password' name='password' placeholder='Password'/>
+        <input type='submit' value='Login'/>
+    </form>
+</div>
 {% endblock %}

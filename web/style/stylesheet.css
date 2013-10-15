@@ -1,3 +1,63 @@
+/* line 1, ../../guard/sass/_header.scss */
+header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #3a3433;
+  background-image: linear-gradient(45deg, transparent 5px, rgba(255, 255, 255, 0.03) 5px, rgba(255, 255, 255, 0.03) 6px, transparent 6px, transparent), linear-gradient(-45deg, transparent 5px, rgba(255, 255, 255, 0.03) 5px, rgba(255, 255, 255, 0.03) 6px, transparent 6px, transparent), linear-gradient(0deg, #36302f 0%, #494443 100%);
+  background-size: 8px 8px,8px 8px, 100% 100%;
+  border-bottom: 1px solid #000000;
+  text-shadow: 0 1px 0 #FFFFFF;
+  box-shadow: 0px 0px 4px #444444;
+}
+/* line 15, ../../guard/sass/_header.scss */
+header div.wrapper {
+  padding: 0px 20px;
+}
+/* line 19, ../../guard/sass/_header.scss */
+header h1 {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  text-shadow: 1px 1px 2px #404040;
+  margin: 0px;
+  line-height: 60px;
+  font-weight: normal;
+  color: #ffffff;
+}
+/* line 26, ../../guard/sass/_header.scss */
+header h1 span {
+  color: #4e7bf0;
+}
+
+/* line 1, ../../guard/sass/_login.scss */
+div.authenticate {
+  width: 300px;
+  margin: 50px auto;
+  padding: 25px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 7, ../../guard/sass/_login.scss */
+div.authenticate input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 30px;
+  padding: 5px;
+  margin: 5px 0px;
+}
+/* line 14, ../../guard/sass/_login.scss */
+div.authenticate input[type="submit"] {
+  background-color: #4E7BF0;
+  color: white;
+}
+
 /* line 5, ../../guard/sass/_stickyNote.scss */
 .stickyNote {
   display: -moz-inline-stack;
@@ -302,74 +362,17 @@
   background-image: radial-gradient(45px 45px, #d0ad87 0px, #c29462 150px);
 }
 
-/* line 8, ../../guard/sass/stylesheet.scss */
+/* line 10, ../../guard/sass/stylesheet.scss */
 html,
 body {
   margin: 0px;
   padding: 0px;
   font-family: 'Droid Sans', sans-serif;
   color: #414141;
+  height: 100%;
 }
 
-/* line 15, ../../guard/sass/stylesheet.scss */
-header {
-  height: 60px;
-  line-height: 60px;
-  background-color: #F3F3F3;
-  background-image: linear-gradient(#f9f9f9, #f3f3f3);
-  background-repeat: repeat-x;
-  border-bottom: 1px solid #E5E5E5;
-  text-shadow: 0 1px 0 #FFFFFF;
-  box-shadow: 0px 0px 4px #444444;
-}
-/* line 25, ../../guard/sass/stylesheet.scss */
-header div.wrapper {
-  padding: 0px 20px;
-}
-/* line 28, ../../guard/sass/stylesheet.scss */
-header h1 {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: top;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  margin: 0px;
-  line-height: 60px;
-  font-weight: normal;
-  color: #4e7bf0;
-}
-/* line 35, ../../guard/sass/stylesheet.scss */
-header h1 strong {
-  font-weight: bold;
-  color: black;
-}
-/* line 40, ../../guard/sass/stylesheet.scss */
-header ul {
-  padding: 0px;
-  margin: 0px;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: top;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-}
-/* line 44, ../../guard/sass/stylesheet.scss */
-header ul li {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: top;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  color: red;
-  padding: 0px 10px;
-  border-left: 1px solid #FFF;
-  border-right: 1px solid #E5E5E5;
-}
-
-/* line 55, ../../guard/sass/stylesheet.scss */
+/* line 20, ../../guard/sass/stylesheet.scss */
 div.content p {
   padding: 0px 20px;
   color: #414141;
